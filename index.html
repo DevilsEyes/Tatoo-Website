@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script>
+        if (navigator.userAgent.match(/mobile/i) != null)location.href = 'm_index.html';
+    </script>
+    <title>纹身大咖</title>
+    <link href="favicon.ico" type="image/x-icon" rel=icon>
+    <script src="jquery.Tatoo.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        input, select, textarea {
+            -webkit-appearance: none;
+            outline: none;
+            border: 0;
+            font-family: "思源黑体", "黑体", sans-serif;
+        }
+
+        input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+            color: #bfbfbf;
+            font-family: "思源黑体", "黑体", sans-serif;
+        }
+
+        a, a:link, a:visited, a:active, b, i, h1, h2, h3, h4, h5, h6 {
+            text-decoration: none;
+            text-shadow: none;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        html {
+            font-family: "思源黑体", "黑体", sans-serif;
+            min-width: 990px;
+        }
+
+        .container {
+            width: 100%;
+        }
+
+        .content {
+            width: 990px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            width: 131px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        h1::after {
+            content: 'x';
+            color: transparent;
+            width: 131px;
+            height: 16px;
+            background-image: url('imgs/pc/underLine.png');
+
+            display: block;
+            position: absolute;
+            margin: 6px 0;
+        }
+
+        header {
+            background-color: #f3f3f3;
+        }
+
+        header img {
+            margin: 24px 30px;
+        }
+
+        .nav {
+            margin: 56px 54px 0 0;
+            float: right;
+        }
+
+        .nav > li {
+            display: inline-block;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 0 0 0 24px;
+            color: #262727;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav > li:hover {
+            color: #a26b61;
+        }
+
+        .s1 {
+            background-color: #262727;
+            height: 539px;
+        }
+
+        .s1 img.banner {
+            position: absolute;
+            padding: 49px 0 0 86px;
+        }
+
+        .s1 .text {
+            padding: 80px 0 0 454px;
+        }
+
+        .s1 .text li::before {
+            content: 'x';
+            color: transparent;
+
+            display: block;
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #e38f71;
+            border-radius: 4px;
+            margin: 8px 0 0 -12px;
+        }
+
+        .s1 .text li {
+            margin: 32px 0 0 44px;
+            padding-left: 6px;
+            color: #b1b1b1;
+            font-size: 20px;
+        }
+
+        .s1 .code {
+            width: 400px;
+            position: absolute;
+            padding: 50px 0 0 30px;
+        }
+
+        .s1 .code img {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .s1 .code p {
+            padding: 30px;
+            line-height: 50px;
+            display: inline-block;
+            vertical-align: middle;
+            color: white;
+            font-size: 20px;
+        }
+
+        .s2 {
+            background-color: #f3f3f3;
+            text-align: center;
+        }
+
+        .s2 h1 {
+            padding-top: 120px;
+        }
+
+        .s2 img {
+            padding-top: 40px;
+        }
+
+        .s2 h2 {
+            font-size: 28px;
+            color: #404040;
+            padding-top: 90px;
+        }
+
+        .s2 p {
+            font-size: 16px;
+            color: #6c6c6c;
+            padding-top: 30px;
+            line-height: 30px;
+        }
+
+        .s2 p:last-child {
+            padding-bottom: 100px;
+        }
+
+        .s3 {
+            background-color: #262727;
+            text-align: center;
+        }
+
+        .s3 h1 {
+            padding-top: 88px;
+            color: white;
+        }
+
+        .s3 p {
+            padding-top: 50px;
+            font-size: 16px;
+            color: white;
+            line-height: 30px;
+        }
+
+        .s3 p:last-child {
+            padding-bottom: 90px;
+        }
+
+        .s4 {
+            background-color: #f3f3f3;
+            text-align: center;
+        }
+
+        .s4 h1 {
+            color: #262727;
+            padding-top: 90px;
+        }
+
+        .s4 h2 {
+            padding: 75px 0;
+            color: #6c6c6c;
+            font-size: 16px;
+            margin: 0 auto;
+        }
+
+        .s4 .content > div {
+            text-align: left;
+            margin: 0 auto;
+            width: 600px;
+        }
+
+        .s4 .row {
+            display: inline-block;
+            margin: 40px;
+        }
+
+        .s4 .row h3 {
+            color: #f0b270;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .s4 .row p {
+            padding-top: 10px;
+            color: #6c6c6c;
+            font-size: 16px;
+        }
+
+        .s4 img {
+            padding: 30px 0 70px 0;
+        }
+
+        .s5 {
+            background-color: #c3baa3;
+        }
+
+        .s5 .backtop {
+            background-color: #c3baa3;
+            position: relative;
+            top: -40px;
+            text-align: center;
+            margin: 0 auto 0 auto;
+            padding-top: 25px;
+            color: white;
+            font-size: 16px;
+            width: 145px;
+            height: 80px;
+            border-radius: 50% 50% 0 0;
+            cursor: pointer;
+        }
+
+        .s5 .backtop p{
+            padding-top: 10px;
+        }
+
+        .s5 .info{
+            text-align: center;
+            margin-top: -40px;
+            padding-bottom: 50px;
+            z-index: 2;
+        }
+
+        .s5 .info h2{
+            color: #272727;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .s5 .info p{
+            font-family: arial,"宋体", "Helvetica", sans-serif;
+            font-size: 12px;
+            color: #7c7668;
+            padding-top:10px;
+        }
+
+        .s5 .info a{
+            color: #8c8678;
+        }
+    </style>
+</head>
+<body>
+<a name="top"></a>
+<header class="container">
+    <div class="content">
+        <img src="imgs/pc/icon.png"/>
+        <ul class="nav">
+            <li>产品特色</li>
+            <li>关于我们</li>
+            <li>联系我们</li>
+        </ul>
+    </div>
+</header>
+
+<section class="s1 container">
+    <div class="content">
+        <img class="banner" src="imgs/pc/s1_phone.png"/>
+
+        <div class="text">
+            <img src="imgs/pc/s1_slogan.png">
+            <ul>
+                <li>国内最大的纹身交流圈</li>
+                <li>国内最大的在线预约平台</li>
+                <li>海量纹身作品图案免费下载！</li>
+            </ul>
+            <div class="code">
+                <img src="imgs/pc/2dCode.png">
+
+                <p>扫描二维码<br>下载纹身大咖APP</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<a name="s2"></a>
+<section class="s2 container">
+    <div class="content">
+        <h1>产品特色</h1>
+        <img src="imgs/pc/s2_banner.png">
+
+        <h2>发现最适合你的纹身</h2>
+
+        <p>国内最专业的纹身图库，编辑定期收集全球最新最潮的纹身图案，每天有上百纹身艺术家投稿，经编辑层层筛选，品质有保障</p>
+
+        <h2>寻找你“心仪”的那个TA</h2>
+
+        <p>囊括各地上万纹身艺术家。由平台实名认证，服务质量有保障，只为做出你独一无二的纹身</p>
+
+        <h2>在线预约一键搞定</h2>
+
+        <p>价格透明，收费统一<br>平台全程跟踪交易，隐形消费统统不见啦~</p>
+    </div>
+</section>
+
+<a name="s3"></a>
+<section class="s3 container">
+    <div class="content">
+        <h1>关于我们</h1>
+
+        <p>
+            北京微蜜科技有限公司成立于2014年，公司致力打造国内最专业的纹身文化传播交流平台，通过规范纹身收费模式，优化纹身<br>
+            流程，线上预约等方式，打破原有大众与纹身行业从业者之间的信息不对等，使大众深刻、<br>
+            理性得认识纹身文化与整个纹身行业。
+        </p>
+
+        <p>
+            团队成员来有来自各大公司的互联网老兵，也有纹身行业资深大佬顾问。<br>
+            公司以传播纹身文化为己任，秉承公平，开放的原则与各方合作，愿为建设纹身行业美好明天舔砖加瓦。
+        </p>
+    </div>
+</section>
+
+<a name="s4"></a>
+<section class="s4 container">
+    <div class="content">
+        <h1>联系我们</h1>
+
+        <h2>如果你对纹身感兴趣，请与我们联系</h2>
+
+        <div>
+            <div class="row">
+                <h3>招聘：</h3>
+
+                <p>邮箱：wenbin@utodo.cn</p>
+            </div>
+
+            <div class="row">
+                <h3>商务合作：</h3>
+
+                <p>邮箱：sales@utodo.cn</p>
+            </div>
+
+            <div class="row">
+                <h3>地址：</h3>
+
+                <p>望京湖光北街旺角广场对面上方花园四层（南湖中园二区211号楼）</p>
+            </div>
+        </div>
+
+        <img src="imgs/pc/bottomLogo.png">
+
+    </div>
+</section>
+
+<section class="s5 container">
+    <div class="content">
+        <div class="backtop">
+            <img src="imgs/pc/arrow.png">
+            <p>回到顶部</p>
+        </div>
+        <div class="info">
+            <h2>北京微蜜科技有限公司</h2>
+            <p>©2014utodo.cn 北京微蜜科技有限公司 版权所有 京ICP备14052625号
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254703491'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/stat.php%3Fid%3D1254703491' type='text/javascript'%3E%3C/script%3E"));</script>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!--百度分享按钮 -->
+<script>
+    $('.nav li:eq(0)').click(function(){location.href='#s2'});
+    $('.nav li:eq(1)').click(function(){location.href='#s3'});
+    $('.nav li:eq(2)').click(function(){location.href='#s4'});
+    $('.backtop').click(function(){location.href='#top'});
+
+
+    window._bd_share_config = {"common": {"bdSnsKey": {}, "bdText": "纹身大咖，最好的纹身师都在这儿！", "bdDesc": "纹身大咖", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16"}, "slide": {"type": "slide", "bdImg": "0", "bdPos": "right", "bdTop": "113.5"}};
+    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+
+    //    document.getElementById('download_url').href=document.getElementById('download_url').href+'?'+Date.now()+Math.random();
+</script>
+</body>
+</html>
